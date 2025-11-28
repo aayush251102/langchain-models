@@ -8,3 +8,4 @@ model = ChatOpenAI(model='gpt-4')
 result = model.invoke("where is motihari loacted?")
 
 print(result.content)
+print("hi")
