@@ -43,9 +43,9 @@ prompt3 = PromptTemplate(
 )
 
 branch_chain = RunnableBranch(
-    (lambda x:x.sentiment == 'positive', prompt2 | model | parser),
-    (lambda x:x.sentiment == 'negative', prompt3 | model | parser),
-    RunnableLambda(lambda x: "could not find sentiment")
+    (lambda x:x.sentiment == 'positive', prompt2 | model | parser), # (condition1, chain1)
+    (lambda x:x.sentiment == 'negative', prompt3 | model | parser), # (condition2, chain2)
+    RunnableLambda(lambda x: "could not find sentiment") # default
 )
 
 chain = classifier_chain | branch_chain
